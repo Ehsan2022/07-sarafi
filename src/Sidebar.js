@@ -53,7 +53,7 @@ const Sidebar = () => {
               aria-label="Toggle navigation">
               <span>❌</span>
             </button>
-            <ul className="nav flex-column pt-3">
+            <ul className="nav flex-column pt-4">
               <li className="nav-item">
                 <a className="nav-link" href="#home">
                   خانه
