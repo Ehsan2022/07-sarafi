@@ -1,17 +1,25 @@
-// App.js
+// src/App.js
 import React from 'react';
-import Sidebar from './Sidebar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Sidebar from './Sidebar'; // Import Sidebar component
+import Home from './Home'; // Import Home component
+import Customer from './Customer'; // Import About component
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Sidebar />
-      <div className="content" style={{ marginLeft: '250px', padding: '20px' }}>
-        <h1>Main Content</h1>
-        <p>Your main content goes here.</p>
+    <Router>
+      <div className="d-flex">
+        <Sidebar /> {/* Render Sidebar */}
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/customer" element={<Customer />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;

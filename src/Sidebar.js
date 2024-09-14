@@ -1,44 +1,45 @@
 /** @format */
 
-// Sidebar.js
-import React from "react";
-import "./index.css"; // For custom styles
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
+import './index.css'; // For custom styles
 
 const Sidebar = () => {
   return (
     <>
       {/* Sidebar for large screens */}
       <div className="d-none d-lg-block sidebar bg-dark text-light p-3">
-        <a className="nav-link text-light" href="#">
+        <Link className="nav-link text-light" to="/">
           <h2 className="text-center">معامله</h2>
-        </a>
+        </Link>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link" href="#home">
+            <Link className="nav-link" to="/home">
               خانه
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#about">
+            <Link className="nav-link" to="/customer">
               ثبت مشتری
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
 
       {/* Navbar for small screens */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark d-lg-none">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           معامله
-        </a>
+        </Link>
         <button
           className="navbar-toggler open"
           type="button"
-          data-toggle="collapse"
-          data-target="#sidebarNav"
+          data-bs-toggle="collapse"
+          data-bs-target="#sidebarNav"
           aria-controls="sidebarNav"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse" id="sidebarNav">
@@ -46,23 +47,24 @@ const Sidebar = () => {
             <button
               className="navbar-toggler close"
               type="button"
-              data-toggle="collapse"
-              data-target="#sidebarNav"
+              data-bs-toggle="collapse"
+              data-bs-target="#sidebarNav"
               aria-controls="sidebarNav"
               aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span>❌</span>
+              aria-label="Toggle navigation"
+            >
+              <span role='img' aria-label='icon'>❌</span>
             </button>
             <ul className="nav flex-column pt-4">
               <li className="nav-item">
-                <a className="nav-link" href="#home">
+                <Link className="nav-link" to="/home">
                   خانه
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#about">
+                <Link className="nav-link" to="/customer">
                   ثبت مشتری
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
