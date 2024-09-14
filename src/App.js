@@ -1,40 +1,43 @@
-/** @format */
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+// import { FaBars } from 'react-icons/fa';
 
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+const App = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-export default function App() {
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
-        {/* Main Content */}
-        <div className="col-md-9">
-          <div className="p-3">
+        {/* Main content */}
+        <div className="col-md-9 col-lg-10">
+          {/* Burger icon for toggling sidebar */}
+          <button className="btn btn-primary mt-2" onClick={toggleSidebar}>
+            {/* <FaBars /> */}
+          </button>
+          <div className="content p-3">
             <h1>Main Content</h1>
             <p>This is the main content area.</p>
-            <p>
-              You can add more content here, and it will take 9 columns of the
-              grid, while the sidebar takes 3 columns on the right.
-            </p>
           </div>
         </div>
 
         {/* Sidebar */}
-        <div className="col-md-3 bg-light border-left">
-          <div className="p-3">
-            <h2>Sidebar</h2>
-            <ul className="list-group">
-              <li className="list-group-item">Item 1</li>
-              <li className="list-group-item">Item 2</li>
-              <li className="list-group-item">Item 3</li>
-            </ul>
-          </div>
+        <div
+          className={`col-md-3 col-lg-2 bg-light sidebar ${sidebarOpen ? 'd-block' : 'd-none'} d-md-block`}>
+          <h4 className="p-3">Sidebar</h4>
+          <ul className="list-unstyled px-3">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
         </div>
       </div>
     </div>
   );
-}
+};
 
-function SideBar() {
-  return <></>;
-}
+export default App;
