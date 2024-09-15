@@ -1,5 +1,8 @@
 /** @format */
 
+body{
+  background-color: black;
+}
 .body {
   display: flex;
 }
@@ -7,9 +10,9 @@
   background-color: rgb(227, 227, 227);
   padding: 20px;
   border: none;
-  box-shadow: 0 0 10px 0.1px black;
   border-radius: 5px;
   width: fit-content;
+  height: fit-content;
   margin: 50px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -21,10 +24,11 @@
   margin-bottom: 10px;
   width: 300px;
   height: 34px;
+  padding-left: 20px;
   border-radius: 5px;
   box-shadow: 0 0 5px 0.1px black;
   border: none;
-  background-color: white;
+  background-color: rgb(220, 255, 255);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -53,41 +57,44 @@
 }
 .customer-list {
   background-color: rgb(227, 227, 227);
-  padding: 20px;
+  padding:20px;
   border: none;
   box-shadow: 0 0 10px 0.1px black;
   border-radius: 5px;
-  width: fit-content;
-  margin: 50px;
+  width: 820px;
+  height: 380px;
+  margin: 110px 50px 50px 50px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  overflow-y: scroll;
 }
-table{
-  
-}
+
 .table-heading{
-  background-color: black;
-  color: white;
+  margin: 50px;
+  width: 820px;
+  height: 50px;
+  position: fixed;
+  background-color: rgb(227, 227, 227);
+  color: black;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   th{
-    padding: 10px 5px;
+    padding: 10px 60px 10px 20px;
   }
 
 }
 tr{
   border-bottom: 1px solid black;
 }
-th{
-  width: 250px;
-}
+
 td{
   align-items: end;
+  width: 270px;
 }
 .select-customer-btn{
   border-radius: 5px;
