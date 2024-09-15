@@ -1,7 +1,30 @@
 /** @format */
 import React from "react";
-
+const customers = [
+  {
+    id: 1,
+    name: "Ehsan",
+    phone: "0790234314",
+    address: "AFG, Herat",
+    balance: 125000,
+  },
+  {
+    id: 2,
+    name: "Neman",
+    phone: "0790230000",
+    address: "AFG, Herat",
+    balance: 112000,
+  },
+  {
+    id: 3,
+    name: "Naqib",
+    phone: "0790239999",
+    address: "AFG, Herat",
+    balance: 111000,
+  },
+];
 export default function Customer_list() {
+  let num = 1;
   return (
     <div className="list">
       <table>
@@ -16,16 +39,18 @@ export default function Customer_list() {
       </table>
       <div className="customer-table">
         <table>
-          <tr>
-            <td>1</td>
-            <td>Ehsan</td>
-            <td>00000000000</td>
-            <td>Herat</td>
-            <td>25678000</td>
-            <td>
-              <button className="select-customer-btn">Select</button>
-            </td>
-          </tr>{" "}
+          {customers.map((customer) => (
+            <tr>
+              <td>{num++}</td>
+              <td>{customer.name}</td>
+              <td>{customer.phone}</td>
+              <td>{customer.address}</td>
+              <td>{customer.balance}</td>
+              <td>
+                <button className="select-customer-btn">Select</button>
+              </td>
+            </tr>
+          ))}
         </table>
       </div>
     </div>
