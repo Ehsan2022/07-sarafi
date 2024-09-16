@@ -29,9 +29,15 @@ const initialCustomers = [
 export default function App() {
   const [customers, setCustomers] = useState(initialCustomers);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   function handleAddCustomer(customer) {
     setCustomers((customers) => [...customers, customer]);
+  }
+  function handleSelectedCustomer(customer) {
+    setSelectedCustomer((current) =>
+      current?.id === customer.id ? null : customer
+    );
   }
 
   function handleOpen() {
@@ -50,7 +56,15 @@ export default function App() {
             handleOpen={handleOpen}></Customer_list>
         </>
       )}
-      {isOpen ? <Customer_info handleOpen={handleOpen}></Customer_info> : <></>}
+      {isOpen ? (
+        <Customer_info
+          handleOpen={handleOpen}
+          handleSelectedCustomer={handleSelectedCustomer}
+          customers={customers}
+          selectedCustomer={selectedCustomer}></Customer_info>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -130,30 +144,45 @@ function Customer_list({ customers, handleOpen }) {
       <div className="customer-table">
         <table>
           {customers.map((customer) => (
-            <tr>
-              <td>{num++}</td>
-              <td>{customer.name}</td>
-              <td>{customer.phone}</td>
-              <td>{customer.address}</td>
-              <td>{customer.balance}</td>
-              <td>
-                <button className="select-customer-btn" onClick={handleOpen}>
-                  Select
-                </button>
-              </td>
-            </tr>
+            <Customer
+              customer={customer}
+              key={customer.id}
+              handleOpen={handleOpen}></Customer>
           ))}
         </table>
       </div>
     </div>
   );
 }
-
-function Customer_info({ handleOpen }) {
+function Customer() {
   return (
+    <tr>
+      <td>{num++}</td>
+      <td>{customer.name}</td>
+      <td>{customer.phone}</td>
+      <td>{customer.address}</td>
+      <td>{customer.balance}</td>
+      <td>
+        <button className="select-customer-btn" onClick={handleOpen}>
+          Select
+        </button>
+      </td>
+    </tr>
+  );
+}
+
+function Customer_info({
+  customers,
+  handleOpen,
+  handleSelectedCustomer,
+  selectedCustomer,
+}) {
+  const isSelected = selectedCustomer?.id === customers.id;
+
+  return customers.map((customer) => (
     <div className="customer_info">
       <h5>
-        <span>👤</span> customer name
+        <span>👤</span> {customer.name}
       </h5>
       <button className="close-info-btn" onClick={handleOpen}>
         ❌
@@ -161,15 +190,15 @@ function Customer_info({ handleOpen }) {
       <div className="customer_data">
         <div className="phone">
           <p>PHONE</p>
-          <p>1234567890</p>
+          <p>{customer.phone}</p>
         </div>
         <div className="address">
           <p>ADDRESS</p>
-          <p>asdfghj</p>
+          <p>{customer.address}</p>
         </div>
         <div className="balance">
           <p>BALANCE</p>
-          <p>87654321</p>
+          <p>{customer.balance}</p>
         </div>
         <div>
           <button className="btn-deposit">Deposit</button>
@@ -177,5 +206,5 @@ function Customer_info({ handleOpen }) {
         </div>
       </div>
     </div>
-  );
+  ));
 }
