@@ -5,18 +5,21 @@ import { useState } from "react";
 
 const initialCustomers = [
   {
+    id: 1,
     name: "Ehsan",
     phone: "0790234314",
     address: "AFG, Herat",
     balance: 125000,
   },
   {
+    id: 2,
     name: "Neman",
     phone: "0790230000",
     address: "AFG, Herat",
     balance: 112000,
   },
   {
+    id: 3,
     name: "Naqib",
     phone: "0790239999",
     address: "AFG, Herat",
@@ -61,7 +64,9 @@ function Customer_form({ handleAddCustomer }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!name || !phone || !address || !balance) return;
+    const id = crypto.randomUUID();
     const newCustomer = {
+      id,
       name,
       phone,
       address,
