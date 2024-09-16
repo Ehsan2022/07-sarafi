@@ -147,23 +147,23 @@ function Customer_list({ customers, handleOpen }) {
 function Customer_info({ handleOpen }) {
   return (
     <div className="customer_info">
-      <h4>
+      <h5>
         <span>👤</span> customer name
-      </h4>
+      </h5>
       <button className="close-info-btn" onClick={handleOpen}>
         ❌
       </button>
       <div className="customer_data">
         <div className="phone">
-          <p>phone</p>
+          <p>PHONE</p>
           <p>1234567890</p>
         </div>
         <div className="address">
-          <p>address</p>
+          <p>ADDRESS</p>
           <p>asdfghj</p>
         </div>
         <div className="balance">
-          <p>balance</p>
+          <p>BALANCE</p>
           <p>87654321</p>
         </div>
         <div>

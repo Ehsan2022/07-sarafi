@@ -135,12 +135,13 @@ td {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  h4 {
+  h5 {
     text-align: center;
     padding-top: 20px;
     span {
+      padding-left: 2px;
       box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.822);
-      font-size: 30px;
+      font-size: 24px;
       border-radius: 50%;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
@@ -165,6 +166,7 @@ td {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   p {
+    font-weight: 400;
     padding: 5px;
     margin-top: 20px;
     background-color: rgb(227, 227, 227);
