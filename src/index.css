@@ -1,10 +1,23 @@
 /** @format */
 
 body {
-  background-color: black;
+  background: url("/money.jpeg");
+}
+h2{
+  text-align: center;
+  margin-top: 20px;
+  color: orange;
 }
 .body {
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
 }
 .customer-form {
   background-color: rgb(227, 227, 227);
@@ -63,19 +76,21 @@ body {
   border-radius: 5px;
   width: 820px;
   height: 380px;
-  margin: 110px 50px 50px 50px;
+  margin-top: 10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   overflow-y: scroll;
+  tr {
+    border-bottom: 1px solid black;
+  }
 }
 
 .table-heading {
-  margin: 50px;
+  margin-top: 50px;
   width: 820px;
   height: 50px;
-  position: fixed;
   background-color: rgb(227, 227, 227);
   color: black;
   border-radius: 5px;
@@ -87,9 +102,7 @@ body {
     padding: 10px 60px 10px 20px;
   }
 }
-tr {
-  border-bottom: 1px solid black;
-}
+
 
 td {
   align-items: end;
