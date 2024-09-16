@@ -1,7 +1,11 @@
 /** @format */
 
 body {
-  background: url("/money.jpeg");
+  background: url("/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 h2{
   text-align: center;
@@ -26,6 +30,7 @@ h2{
   border-radius: 5px;
   width: fit-content;
   height: fit-content;
+  box-shadow: 0 0 5px 0.1px black;
   margin: 50px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -92,6 +97,8 @@ h2{
   width: 820px;
   height: 50px;
   background-color: rgb(227, 227, 227);
+  box-shadow: 0 0 5px 0.1px black;
+
   color: black;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -132,7 +139,7 @@ td {
 
 .customer_info {
   background: rgb(227, 227, 227);
-  box-shadow: 0 0 10px 0.1px rgba(255, 255, 255, 0.822);
+  box-shadow: 0 0 5px 0.1px black;
   height: 300px;
   width: 500px;
   border-radius: 5px;
@@ -166,7 +173,7 @@ td {
 .customer_data {
   display: inline-flex;
   background-color: white;
-  box-shadow: 0 0 20px 0.1px rgb(166, 166, 166);
+  box-shadow: 0 0 5px 0.1px black;
   height: 200px;
   width: 480px;
   border-radius: 5px;
@@ -238,7 +245,7 @@ td {
 
 .actionModal {
   position: absolute;
-  top: 56%;
+  margin-top: 39px;
   left: 50%;
   transform: translate(-50%, -50%);
   padding-top: 20px;
@@ -247,6 +254,8 @@ td {
   border-radius: 5px;
   background-color: white;
   color: black;
+  box-shadow: 0 0 5px 0.1px black;
+
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;

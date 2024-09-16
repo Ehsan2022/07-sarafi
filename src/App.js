@@ -81,7 +81,12 @@ export default function App() {
 
   return (
     <>
-      <h2>SARAFI<span><h6>Mohammad Ehsan Nicksaresht</h6></span></h2>
+      <h2>
+        SARAFI
+        <span>
+          <h6>Mohammad Ehsan Nicksaresht</h6>
+        </span>
+      </h2>
 
       <div className="body">
         {isInfoOpen ? (
