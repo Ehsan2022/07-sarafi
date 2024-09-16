@@ -28,8 +28,11 @@ const initialCustomers = [
 ];
 export default function App() {
   const [customers, setCustomers] = useState(initialCustomers);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [isActionOpen, setIsActionOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [actionType, setActionType] = useState("");
+  const [actionAmount, setActionAmount] = useState("");
 
   function handleAddCustomer(customer) {
     setCustomers((customers) => [...customers, customer]);
@@ -40,28 +43,46 @@ export default function App() {
     );
   }
 
-  function handleOpen() {
-    setIsOpen((is) => !is);
+  function handleInfoOpen() {
+    setIsInfoOpen((is) => !is);
   }
+  function handleActionOpen(type) {
+    setIsActionOpen((is) => !is);
+    setActionType(type);
+  }
+  function handleOk() {}
 
   return (
     <div className="body">
-      {isOpen ? (
+      {isInfoOpen ? (
         <></>
       ) : (
         <>
           <Customer_form handleAddCustomer={handleAddCustomer}></Customer_form>
           <Customer_list
             customers={customers}
-            handleOpen={handleOpen}
+            handleInfoOpen={handleInfoOpen}
             handleSelectedCustomer={handleSelectedCustomer}></Customer_list>
         </>
       )}
-      {isOpen ? (
-        <Customer_info
-          handleOpen={handleOpen}
-          customers={customers}
-          selectedCustomer={selectedCustomer}></Customer_info>
+      {isInfoOpen ? (
+        <>
+          <Customer_info
+            handleActionOpen={handleActionOpen}
+            handleInfoOpen={handleInfoOpen}
+            customers={customers}
+            selectedCustomer={selectedCustomer}></Customer_info>
+          {isActionOpen ? (
+            <Action_modal
+              actionAmount={actionAmount}
+              setActionAmount={setActionAmount}
+              actionType={actionType}
+              handleActionOpen={handleActionOpen}
+              selectedCustomer={selectedCustomer}></Action_modal>
+          ) : (
+            <></>
+          )}
+        </>
       ) : (
         <></>
       )}
@@ -127,7 +148,7 @@ function Customer_form({ handleAddCustomer }) {
   );
 }
 
-function Customer_list({ customers, handleOpen, handleSelectedCustomer }) {
+function Customer_list({ customers, handleInfoOpen, handleSelectedCustomer }) {
   let num = 1;
   return (
     <div className="list">
@@ -149,12 +170,12 @@ function Customer_list({ customers, handleOpen, handleSelectedCustomer }) {
               <td>{customer.name}</td>
               <td>{customer.phone}</td>
               <td>{customer.address}</td>
-              <td>{customer.balance}</td>
+              <td>{customer.balance} AFs</td>
               <td>
                 <button
                   className="select-customer-btn"
                   onClick={() => {
-                    handleOpen();
+                    handleInfoOpen();
                     handleSelectedCustomer(customer);
                   }}>
                   Select
@@ -168,14 +189,14 @@ function Customer_list({ customers, handleOpen, handleSelectedCustomer }) {
   );
 }
 
-function Customer_info({ handleOpen, selectedCustomer }) {
+function Customer_info({ handleInfoOpen, selectedCustomer, handleActionOpen }) {
   return selectedCustomer ? (
     <>
       <div className="customer_info">
         <h5>
           <span>👤</span> {selectedCustomer.name}
         </h5>
-        <button className="close-info-btn" onClick={handleOpen}>
+        <button className="close-info-btn" onClick={handleInfoOpen}>
           ❌
         </button>
         <div className="customer_data">
@@ -189,27 +210,45 @@ function Customer_info({ handleOpen, selectedCustomer }) {
           </div>
           <div className="balance">
             <p>BALANCE</p>
-            <p>{selectedCustomer.balance}</p>
+            <p>{selectedCustomer.balance} AFs</p>
           </div>
           <div>
-            <button className="btn-deposit">Deposit</button>
-            <button className="btn-withdraw">Withdraw</button>
+            <button
+              className="btn-deposit"
+              onClick={() => handleActionOpen("Deposit")}>
+              Deposit
+            </button>
+            <button
+              className="btn-withdraw"
+              onClick={() => handleActionOpen("Withdraw")}>
+              Withdraw
+            </button>
           </div>
         </div>
       </div>
-      <Action_modal></Action_modal>
     </>
   ) : null;
 }
 
-function Action_modal() {
+function Action_modal({
+  handleActionOpen,
+  selectedCustomer,
+  actionType,
+  actionAmount,
+  setActionAmount,
+}) {
   return (
     <>
       <div className="actionModal">
-        <p>Balance : 10000000000</p>
-        Amount : <input type="text" />
+        <div className="data">
+          <p>Balance: {selectedCustomer.balance} AFs</p>
+          {actionType} :{" "}
+          <input type="text" placeholder=" amount" value={actionAmount} />
+        </div>
         <button className="ok">Ok</button>
-        <button className="cancel">Cancel</button>
+        <button className="cancel" onClick={handleActionOpen}>
+          Cancel
+        </button>
       </div>
     </>
   );

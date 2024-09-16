@@ -228,7 +228,6 @@ td {
   top: 56%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
   padding-top: 20px;
   height: 200px;
   width: 480px;
@@ -239,10 +238,14 @@ td {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  p {
-    width: 420px;
+  .data {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   input {
+    margin-left: 5px;
     box-shadow: 0 0 5px 0.1px black;
     border: none;
     width: 150px;
