@@ -1,6 +1,6 @@
 /** @format */
 
-body{
+body {
   background-color: black;
 }
 .body {
@@ -57,7 +57,7 @@ body{
 }
 .customer-table {
   background-color: rgb(227, 227, 227);
-  padding:20px;
+  padding: 20px;
   border: none;
   box-shadow: 0 0 10px 0.1px black;
   border-radius: 5px;
@@ -71,7 +71,7 @@ body{
   overflow-y: scroll;
 }
 
-.table-heading{
+.table-heading {
   margin: 50px;
   width: 820px;
   height: 50px;
@@ -83,20 +83,19 @@ body{
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  th{
+  th {
     padding: 10px 60px 10px 20px;
   }
-
 }
-tr{
+tr {
   border-bottom: 1px solid black;
 }
 
-td{
+td {
   align-items: end;
   width: 270px;
 }
-.select-customer-btn{
+.select-customer-btn {
   border-radius: 5px;
   border: none;
   width: 100px;
@@ -109,11 +108,115 @@ td{
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-.select-customer-btn:hover{
+.select-customer-btn:hover {
   background-color: rgb(72, 160, 249);
-  transition:.2s ;
-  -webkit-transition:.2s ;
-  -moz-transition:.2s ;
-  -ms-transition:.2s ;
-  -o-transition:.2s ;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+
+.customer_info {
+  background: rgb(227, 227, 227);
+  box-shadow: 0 0 10px 0.1px rgba(255, 255, 255, 0.822);
+  height: 300px;
+  width: 500px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  h4 {
+    text-align: center;
+    padding-top: 20px;
+    span {
+      box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.822);
+      font-size: 30px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+    }
+  }
+}
+.customer_data {
+  display: inline-flex;
+  background-color: white;
+  box-shadow: 0 0 20px 0.1px rgb(166, 166, 166);
+  height: 200px;
+  width: 480px;
+  border-radius: 5px;
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  p {
+    padding: 5px;
+    margin-top: 20px;
+    background-color: rgb(227, 227, 227);
+  }
+}
+
+.phone,
+.balance {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+.address {
+  text-align: center;
+  width: 280px;
+  height: 100px;
+}
+
+.close-info-btn {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.btn-deposit {
+  position: absolute;
+  top: 70%;
+  left: 55%;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+  background-color: rgb(57, 192, 48);
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.btn-withdraw {
+  position: absolute;
+  top: 70%;
+  left: 25%;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+  background-color: rgb(226, 95, 95);
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
