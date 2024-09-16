@@ -222,3 +222,57 @@ td {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
+.actionModal {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top: 20px;
+  height: 200px;
+  width: 480px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  p {
+    width: 420px;
+  }
+  input {
+    box-shadow: 0 0 5px 0.1px black;
+    border: none;
+    width: 150px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+
+  .ok {
+    position: absolute;
+    top: 70%;
+    left: 25%;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    background-color: rgb(57, 192, 48);
+    color: white;
+  }
+  .cancel {
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    background-color: rgb(226, 95, 95);
+    color: white;
+  }
+}

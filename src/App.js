@@ -208,6 +208,8 @@ function Action_modal() {
       <div className="actionModal">
         <p>Balance : 10000000000</p>
         Amount : <input type="text" />
+        <button className="ok">Ok</button>
+        <button className="cancel">Cancel</button>
       </div>
     </>
   );
