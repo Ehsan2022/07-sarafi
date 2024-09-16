@@ -32,15 +32,12 @@ export default function App() {
   const [isActionOpen, setIsActionOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [actionType, setActionType] = useState("");
-  const [actionAmount, setActionAmount] = useState("");
 
   function handleAddCustomer(customer) {
     setCustomers((customers) => [...customers, customer]);
   }
   function handleSelectedCustomer(customer) {
-    setSelectedCustomer((current) =>
-      current?.id === customer.id ? null : customer
-    );
+    setSelectedCustomer(customer);
   }
 
   function handleInfoOpen() {
@@ -50,7 +47,33 @@ export default function App() {
     setIsActionOpen((is) => !is);
     setActionType(type);
   }
-  function handleOk() {}
+  function handleActionAmount(value) {
+    if (actionType === "Deposit") {
+      setCustomers((customers) =>
+        customers.map((customer) =>
+          customer.id === selectedCustomer.id
+            ? { ...customer, balance: customer.balance + value } // Add value to balance
+            : customer
+        )
+      );
+    } else if (actionType === "Withdraw") {
+      if (value < selectedCustomer.balance) {
+        setCustomers((customers) =>
+          customers.map((customer) =>
+            customer.id === selectedCustomer.id
+              ? { ...customer, balance: customer.balance - value } // Subtract value from balance
+              : customer
+          )
+        );
+      } else {
+        alert(
+          "Insufficent Balance! You need " +
+            (value - selectedCustomer.balance) +
+            " more Afghanis😊"
+        );
+      }
+    }
+  }
 
   return (
     <div className="body">
@@ -74,10 +97,10 @@ export default function App() {
             selectedCustomer={selectedCustomer}></Customer_info>
           {isActionOpen ? (
             <Action_modal
-              actionAmount={actionAmount}
-              setActionAmount={setActionAmount}
+              handleActionAmount={handleActionAmount}
               actionType={actionType}
               handleActionOpen={handleActionOpen}
+              handleInfoOpen={handleInfoOpen}
               selectedCustomer={selectedCustomer}></Action_modal>
           ) : (
             <></>
@@ -142,7 +165,7 @@ function Customer_form({ handleAddCustomer }) {
           onChange={(e) => setBalance(Number(e.target.value))}
         />
 
-        <button className="save-btn">Save</button>
+        <button className="save-btn">Add</button>
       </form>
     </div>
   );
@@ -232,24 +255,38 @@ function Customer_info({ handleInfoOpen, selectedCustomer, handleActionOpen }) {
 
 function Action_modal({
   handleActionOpen,
+  handleInfoOpen,
   selectedCustomer,
   actionType,
-  actionAmount,
-  setActionAmount,
+  handleActionAmount,
 }) {
+  const [actionAmount, setActionAmount] = useState("");
+
+  function handleOk(e) {
+    e.preventDefault();
+    handleActionAmount(actionAmount); // Pass the amount as a number
+    handleActionOpen();
+    handleInfoOpen();
+  }
+
   return (
-    <>
-      <div className="actionModal">
-        <div className="data">
-          <p>Balance: {selectedCustomer.balance} AFs</p>
-          {actionType} :{" "}
-          <input type="text" placeholder=" amount" value={actionAmount} />
-        </div>
-        <button className="ok">Ok</button>
-        <button className="cancel" onClick={handleActionOpen}>
-          Cancel
-        </button>
+    <form className="actionModal" onSubmit={handleOk}>
+      <div className="data">
+        <p>Balance: {selectedCustomer.balance} AFs</p>
+        {actionType}:{" "}
+        <input
+          type="text"
+          placeholder="amount"
+          value={actionAmount}
+          onChange={(e) => setActionAmount(Number(e.target.value))} // Store the entered amount
+        />
       </div>
-    </>
+      <button type="submit" className="ok">
+        Ok
+      </button>
+      <button className="cancel" onClick={handleActionOpen}>
+        Cancel
+      </button>
+    </form>
   );
 }
