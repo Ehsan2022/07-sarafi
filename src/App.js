@@ -170,31 +170,45 @@ function Customer_list({ customers, handleOpen, handleSelectedCustomer }) {
 
 function Customer_info({ handleOpen, selectedCustomer }) {
   return selectedCustomer ? (
-    <div className="customer_info">
-      <h5>
-        <span>👤</span> {selectedCustomer.name}
-      </h5>
-      <button className="close-info-btn" onClick={handleOpen}>
-        ❌
-      </button>
-      <div className="customer_data">
-        <div className="phone">
-          <p>PHONE</p>
-          <p>{selectedCustomer.phone}</p>
-        </div>
-        <div className="address">
-          <p>ADDRESS</p>
-          <p>{selectedCustomer.address}</p>
-        </div>
-        <div className="balance">
-          <p>BALANCE</p>
-          <p>{selectedCustomer.balance}</p>
-        </div>
-        <div>
-          <button className="btn-deposit">Deposit</button>
-          <button className="btn-withdraw">Withdraw</button>
+    <>
+      <div className="customer_info">
+        <h5>
+          <span>👤</span> {selectedCustomer.name}
+        </h5>
+        <button className="close-info-btn" onClick={handleOpen}>
+          ❌
+        </button>
+        <div className="customer_data">
+          <div className="phone">
+            <p>PHONE</p>
+            <p>{selectedCustomer.phone}</p>
+          </div>
+          <div className="address">
+            <p>ADDRESS</p>
+            <p>{selectedCustomer.address}</p>
+          </div>
+          <div className="balance">
+            <p>BALANCE</p>
+            <p>{selectedCustomer.balance}</p>
+          </div>
+          <div>
+            <button className="btn-deposit">Deposit</button>
+            <button className="btn-withdraw">Withdraw</button>
+          </div>
         </div>
       </div>
-    </div>
+      <Action_modal></Action_modal>
+    </>
   ) : null;
+}
+
+function Action_modal() {
+  return (
+    <>
+      <div className="actionModal">
+        <p>Balance : 10000000000</p>
+        Amount : <input type="text" />
+      </div>
+    </>
+  );
 }
